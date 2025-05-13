@@ -1,0 +1,6 @@
+pyaudio
+vosk
+soxr
+numpy
+requests
+pydub
