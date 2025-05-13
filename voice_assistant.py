@@ -162,9 +162,6 @@ config = load_config()
 # Apply loaded config values
 VOLUME = config["volume"]
 MIC_NAME = config["mic_name"]
-# Choose your audio output device
-# "plughw:2,0" for Plantronics headset
-# "plughw:3,0" for USB PnP Sound Device
 AUDIO_OUTPUT_DEVICE = config["audio_output_device"]
 AUDIO_OUTPUT_DEVICE_INDEX = get_output_device_index(config["audio_output_device"])
 OUTPUT_CARD = parse_card_number(AUDIO_OUTPUT_DEVICE)
@@ -186,14 +183,7 @@ CHANNELS = 1
 mic_enabled = True
 DEVICE_INDEX = get_input_device_index()
 
-# ------------------- OLLAMA MODEL SELECTION -------------------
-
-# Uncomment the model you wish to use:
-# MODEL_NAME = "qwen2.5:0.5b"
-# MODEL_NAME = "qwen3:0.6b"
-# MODEL_NAME = "tinyllama"
-# MODEL_NAME = "gemma3:1b"
-
+# SOUND EFFECTS
 NOISE_LEVEL = '0.04'
 BANDPASS_HIGHPASS = '300'
 BANDPASS_LOWPASS = '800'
@@ -217,11 +207,6 @@ print(f"[Debug] Config loaded: model={MODEL_NAME}, voice={config['voice']}, vol=
 
 audio_queue = queue.Queue()
 
-# Audio callback for plantronics / generic mics
-#def audio_callback(in_data, frame_count, time_info, status):
-#    audio_queue.put(in_data)
-#    return (None, pyaudio.paContinue)
-
 # Audio callback form Shure
 def audio_callback(in_data, frame_count, time_info, status):
     global mic_enabled
@@ -235,12 +220,7 @@ def audio_callback(in_data, frame_count, time_info, status):
 
 def start_stream():
     pa = pyaudio.PyAudio()
-    #print('[Debug] Input devices:')
-    #for i in range(pa.get_device_count()):
-    #    d = pa.get_device_info_by_index(i)
-    #    if d['maxInputChannels'] > 0:
-    #        print(f"  {i}: {d['name']} ({d['maxInputChannels']}ch @ {d['defaultSampleRate']}Hz)")
-    #print(f'[Debug] Using DEVICE_INDEX={DEVICE_INDEX}')
+
     stream = pa.open(
         rate=RATE,
         format=pyaudio.paInt16,
@@ -257,22 +237,11 @@ def start_stream():
 # ------------------- QUERY OLLAMA CHAT ENDPOINT -------------------
 
 def query_ollama():
-    #payload = {
-    #    "model": MODEL_NAME, 
-    #    "messages": messages, 
-    #    "stream": False}
     payload = {
         "model": MODEL_NAME,
         "messages": [messages[0]] + messages[-HISTORY_LENGTH:],  # force system prompt at top
         "stream": False}
-    #payload = {
-    #    "model": MODEL_NAME, 
-    #    "messages": messages[-(HISTORY_LENGTH + 1):], 
-    #    "stream": False}
 
-    #print('[Debug] Sending messages to Ollama chat:')
-    #for m in messages[-(HISTORY_LENGTH+1):]:
-    #    print(f"  {m['role']}: {m['content']}")
     with Timer("Inference"):  # measure inference latency
         resp = requests.post(CHAT_URL, json=payload)
     #print(f'[Debug] Ollama status: {resp.status_code}')
@@ -469,7 +438,6 @@ def processing_loop():
                     print('[Debug] Empty response, skipping TTS.')
 
                 # Reset recognizer after each full interaction
-                #rec = KaldiRecognizer(model, RATE)
                 rec = KaldiRecognizer(model, 16000)
 
 # ------------------- MAIN -------------------
